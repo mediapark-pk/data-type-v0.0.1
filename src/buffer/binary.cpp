@@ -52,7 +52,7 @@ int Buffer::Binary::sizeInBits()
 // }
 
 
-Algo::Digest Buffer::Binary::hash()
+CAlgo::Digest Buffer::Binary::hash()
 {
-   return Algo::Digest(*this);
+   return CAlgo::Digest(*this);
 }
