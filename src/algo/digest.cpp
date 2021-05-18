@@ -8,14 +8,14 @@
 #include "crypto/sha1.h"
 #include "crypto/sha256.h"
 
-Algo::Digest::Digest(Buffer::Binary& mBuffer) : m_buffer{mBuffer} {}
+CAlgo::Digest::Digest(Buffer::Binary& mBuffer) : m_buffer{mBuffer} {}
 
-Buffer::Binary Algo::Digest::result(const std::string& bytes)
+Buffer::Binary CAlgo::Digest::result(const std::string& bytes)
 {
    return Buffer::Binary(bytes);
 }
 
-Buffer::Binary Algo::Digest::digest(const std::string& algo, const int iterations, const int bytes)
+Buffer::Binary CAlgo::Digest::digest(const std::string& algo, const int iterations, const int bytes)
 {
    std::string hashed = this->m_buffer.raw();
    if (algo == "md5") {
@@ -48,27 +48,27 @@ Buffer::Binary Algo::Digest::digest(const std::string& algo, const int iteration
    return this->result(hashed);
 }
 
-Buffer::Binary Algo::Digest::md5(int bytes)
+Buffer::Binary CAlgo::Digest::md5(int bytes)
 {
    return this->digest("md5", 1, bytes);
 }
 
-Buffer::Binary Algo::Digest::sha1(int bytes)
+Buffer::Binary CAlgo::Digest::sha1(int bytes)
 {
    return this->digest("sha1", 1, bytes);
 }
 
-Buffer::Binary Algo::Digest::sha256(int bytes)
+Buffer::Binary CAlgo::Digest::sha256(int bytes)
 {
    return this->digest("sha256", 1, bytes);
 }
 
-Buffer::Binary Algo::Digest::ripeMd160(int bytes)
+Buffer::Binary CAlgo::Digest::ripeMd160(int bytes)
 {
    return this->digest("ripemd160", 1, bytes);
 }
 
-Buffer::Binary Algo::Digest::pbkdf2(
+Buffer::Binary CAlgo::Digest::pbkdf2(
    const std::string& algo, Buffer::Binary salt, int iterations, int length)
 {
    std::string d_salt = salt.raw();
@@ -98,7 +98,7 @@ Buffer::Binary Algo::Digest::pbkdf2(
 //    }
 // }
 
-Buffer::Binary Algo::Digest::hmac(const std::string& algo, Buffer::Binary key)
+Buffer::Binary CAlgo::Digest::hmac(const std::string& algo, Buffer::Binary key)
 {
    std::string rawKey = key.raw();
    if (algo == "Sha256" || algo == "sha256" || algo == "SHA256") {

@@ -14,7 +14,7 @@ namespace Buffer
 {
 class Binary;
 }
-namespace Algo
+namespace CAlgo
 {
 class Digest
 {
