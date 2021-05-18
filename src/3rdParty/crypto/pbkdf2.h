@@ -82,7 +82,7 @@ void pbkdf2_hmac_sha512(
     uint32_t iterations,
     uint8_t* key);
 
-enum class Algo : unsigned char { SHA256, SHA512 };
+enum class SHA : unsigned char { SHA256, SHA512 };
 
 template <typename T>
 std::vector<uint8_t> hashPbkdf2(

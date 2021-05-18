@@ -6,38 +6,42 @@
 #ifndef DATA_TYPES_DIGEST_H
 #define DATA_TYPES_DIGEST_H
 
-#include "../base16.h"
+//#include "../base16.h"
 #include <exception>
+#include <string>
 
+namespace Buffer
+{
+class Binary;
+}
+namespace Algo
+{
+class Digest
+{
+   Buffer::Binary& m_buffer;
+   Buffer::Binary result(const std::string& bytes);
 
-namespace Buffer { class Binary; }
-namespace CPPBinary {
-    class Digest {
-        Buffer::Binary &m_buffer;
+   public:
+   Digest();
 
-        Buffer::Binary result(const std::string &bytes);
+   Digest(Buffer::Binary& mBuffer);
 
-    public:
-        Digest();
+   Buffer::Binary digest(const std::string& algo, const int iterations = 1, const int bytes = 0);
 
-        Digest(Buffer::Binary &mBuffer);
+   Buffer::Binary md5(int bytes = 0);
 
-        Buffer::Binary digest(const std::string &algo, const int iterations = 1, const int bytes = 0);
+   Buffer::Binary sha1(int bytes = 0);
 
-        Buffer::Binary md5(int bytes = 0);
+   Buffer::Binary sha256(int bytes = 0);
 
-        Buffer::Binary sha1(int bytes = 0);
+   Buffer::Binary ripeMd160(int bytes = 0);
 
-        Buffer::Binary sha256(int bytes = 0);
+   Buffer::Binary pbkdf2(const std::string& algo, Buffer::Binary salt, int iterations, int length = 0);
 
-        Buffer::Binary ripeMd160(int bytes = 0);
+   //TODO:: once base16 class is added
+//      Buffer::Binary hmac(const std::string& algo, Buffer::Base16 key);
 
-        Buffer::Binary pbkdf2(const std::string &algo, Buffer::Binary salt, int iterations, int length=0);
-
-        Buffer::Binary hmac(const std::string &algo, Buffer::Base16 key);
-
-        Buffer::Binary hmac(const std::string &algo, Buffer::Binary key);
-
-    };
-};        // namespace CPPBinary
-#endif    // DATA_TYPES_DIGEST_H
+   Buffer::Binary hmac(const std::string& algo, Buffer::Binary key);
+};
+};        // namespace Algo
+#endif    // DATA_TYPES_ALGO_H
