@@ -124,3 +124,7 @@ Buffer::AbstractBuffer::AbstractBuffer(std::string data)
    m_len = 0;
    m_size = 0;
 }
+const std::string& Buffer::AbstractBuffer::getBufferData()
+{
+   return m_data;
+}

@@ -28,6 +28,7 @@ class AbstractBuffer
    std::string value(const int start = 0, const int length = 0);
    int getSize();
    int len();
+   const std::string &getBufferData();
 
    AbstractBuffer* append(AbstractBuffer& data);
    AbstractBuffer* prepend(AbstractBuffer& data);
