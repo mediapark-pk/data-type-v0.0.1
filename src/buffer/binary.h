@@ -24,7 +24,7 @@ class Binary : public AbstractBuffer
    std::string raw();
    int sizeInBytes();
    int sizeInBits();
-   Algo::Digest hash();
+   CAlgo::Digest hash();
 
    //    Base16 base16();
    //    Base64 base64();
