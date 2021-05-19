@@ -7,4 +7,4 @@ add_executable(data_types_v0_0_0 validator.h main.cpp configexception.h
         ${Buffer}
         ${Utils}
         ${CAlgo})
-target_link_libraries(data_types_v0_0_0 ${crypto})
+target_link_libraries(data_types_v0_0_0 crypto)
