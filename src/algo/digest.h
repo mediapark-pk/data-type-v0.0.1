@@ -6,13 +6,14 @@
 #ifndef DATA_TYPES_DIGEST_H
 #define DATA_TYPES_DIGEST_H
 
-//#include "../base16.h"
+//#include "../buffer/base16.h"
 #include <exception>
 #include <string>
 
 namespace Buffer
 {
 class Binary;
+class Base16;
 }
 namespace CAlgo
 {
@@ -38,10 +39,9 @@ class Digest
 
    Buffer::Binary pbkdf2(const std::string& algo, Buffer::Binary salt, int iterations, int length = 0);
 
-   //TODO:: once base16 class is added
-//      Buffer::Binary hmac(const std::string& algo, Buffer::Base16 key);
+   Buffer::Binary hmac(const std::string& algo, Buffer::Base16 &key);
 
    Buffer::Binary hmac(const std::string& algo, Buffer::Binary key);
 };
-};        // namespace Algo
+};        // namespace CAlgo
 #endif    // DATA_TYPES_ALGO_H

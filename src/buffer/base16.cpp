@@ -2,12 +2,7 @@
 #include "base16.h"
 //#include "base16/decoder.h"
 
-// Buffer::Base16::Base16(const std::string &data) : Buffer::AbstractBuffer() {
-//     if (getMData().empty()) {
-//         setBufferData(validatedDataTypeValue(data));
-//     }
-// }
-
+Buffer::Base16::Base16(const std::string& data) : Buffer::AbstractBuffer(data) {}
 
 std::string Buffer::Base16::validatedDataTypeValue(const std::string& data)
 {
@@ -37,12 +32,13 @@ std::string Buffer::Base16::hexits(const bool prefix)
    return hexits;
 }
 
-//Buffer::Binary Buffer::Base16::binary()
-//{
-//   return Binary(hexToBin(this->hexits(false)));
-//}
-//
-//std::unique_ptr<CPPBase16::Decoder> Buffer::Base16::decode()
+std::shared_ptr<Buffer::Binary> Buffer::Base16::binary()
+{
+   return std::make_shared<Buffer::Binary>(Binary(hexToBin(this->hexits(false))));
+}
+
+
+// std::unique_ptr<CPPBase16::Decoder> Buffer::Base16::decode()
 //{
 //   CPPBase16::Decoder decoder(*this);
 //   return std::make_unique<CPPBase16::Decoder>(decoder);

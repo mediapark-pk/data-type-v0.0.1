@@ -1,5 +1,6 @@
 
 #include "digest.h"
+#include "buffer/base16.h"
 #include "buffer/binary.h"
 #include "crypto/hmac.h"
 #include "crypto/md5.h"
@@ -83,20 +84,19 @@ Buffer::Binary CAlgo::Digest::pbkdf2(
    }
 }
 
-// TODO:: once base16 class is added
-// Buffer::Binary Algo::Digest::hmac(const std::string& algo, Buffer::Base16 key)
-//{
-//    std::string rawKey = key.binary().raw();
-//    if (algo == "Sha256" || algo == "sha256" || algo == "SHA256") {
-//       std::vector<unsigned char> hash = hashHmac(
-//          static_cast<HMAC_ALGO>(Algo::SHA256), m_buffer.raw(), rawKey);
-//       return std::string{hash.begin(), hash.end()};
-//    } else if (algo == "sha512" || algo == "Sha512" || algo == "SHA512") {
-//       std::vector<unsigned char> hash = hashHmac(
-//          static_cast<HMAC_ALGO>(Algo::SHA512), m_buffer.raw(), rawKey);
-//       return std::string{hash.begin(), hash.end()};
-//    }
-// }
+Buffer::Binary CAlgo::Digest::hmac(const std::string& algo, Buffer::Base16 &key)
+{
+   std::string rawKey = key.binary()->raw();
+   if (algo == "Sha256" || algo == "sha256" || algo == "SHA256") {
+      std::vector<unsigned char> hash = hashHmac(
+         static_cast<HMAC_ALGO>(SHA::SHA256), m_buffer.raw(), rawKey);
+      return std::string{hash.begin(), hash.end()};
+   } else if (algo == "sha512" || algo == "Sha512" || algo == "SHA512") {
+      std::vector<unsigned char> hash = hashHmac(
+         static_cast<HMAC_ALGO>(SHA::SHA512), m_buffer.raw(), rawKey);
+      return std::string{hash.begin(), hash.end()};
+   }
+}
 
 Buffer::Binary CAlgo::Digest::hmac(const std::string& algo, Buffer::Binary key)
 {

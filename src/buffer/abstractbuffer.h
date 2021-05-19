@@ -18,7 +18,6 @@ class AbstractBuffer
    bool m_readOnly;
 
    public:
-   AbstractBuffer();
    AbstractBuffer(std::string data);
 
    std::string serialize();
