@@ -26,11 +26,10 @@ Buffer::Base16 Buffer::Binary::base16()
    return Base16(binToHex(this->raw()));
 }
 
-// TODO :: Dependency on base64
-// Buffer::Base64 Buffer::Binary::base64()
-//{
-//    return Buffer::Base64(Utils::base64_encode(this->raw()));
-// }
+Buffer::Base64 Buffer::Binary::base64()
+{
+   return Buffer::Base64(Utils::base64_encode(this->raw()));
+}
 
 CAlgo::Digest Buffer::Binary::hash()
 {

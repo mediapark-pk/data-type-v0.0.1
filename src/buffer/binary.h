@@ -9,8 +9,10 @@
 #include "utils/strencodings.h"
 
 
+
 namespace Buffer
 {
+class Base64;
 class Binary : public AbstractBuffer
 {
    public:
@@ -22,7 +24,7 @@ class Binary : public AbstractBuffer
    int sizeInBits();
    CAlgo::Digest hash();
    Base16 base16();
-   //    Base64 base64();
+   Base64 base64();
 };
 }    // namespace Buffer
 #endif    // DATA_TYPES_BINARY_H
