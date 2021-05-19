@@ -1,8 +1,5 @@
 
 #include "binary.h"
-//#include "base64.h"
-//#include "binary/lensize.h"
-//#include "bitwise.h"
 
 Buffer::Binary::Binary(const std::string& data) : AbstractBuffer(data) {}
 

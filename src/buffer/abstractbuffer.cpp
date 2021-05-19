@@ -108,7 +108,6 @@ std::string Buffer::AbstractBuffer::value(const int start, const int length)
          return "";
       }
    }
-
    return data;
 }
 

@@ -34,6 +34,7 @@ class AbstractBuffer
    AbstractBuffer* readOnly(bool set);
    AbstractBuffer* set(const std::string data = "");
 
+   /** TODO: return bool instead of string in next phase **/
    virtual std::string validatedDataTypeValue(const std::string& data) = 0;
 };
 };    // namespace Buffer
